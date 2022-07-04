@@ -6,11 +6,21 @@ public class Prisoners {
         System.out.println(boxes);
         Box testBox = new Box(3);
         System.out.println(testBox.getHiddenNumber());
+        Prisoner testPrisoner = new Prisoner(2);
+        System.out.println(testPrisoner.getPrisonerNumber());
         // boxes.add(new Box)
     }
     public static class Prisoner{
-        int prisonerNumber;
+        private int prisonerNumber;
+
+        public Prisoner(int prisonerNumberHolder){
+            prisonerNumber = prisonerNumberHolder;
+        }
+        public int getPrisonerNumber(){
+            return this.prisonerNumber;
+        }
     }
+    
     public static class Box{
         private int hiddenNumber;
         public Box(int hiddenNumberHolder){
