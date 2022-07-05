@@ -32,6 +32,14 @@ public class Prisoners {
         Prisoner testPrisoner = new Prisoner(2);
         System.out.println(testPrisoner.getPrisonerNumber());
         boxes.add(testBox);
+        for (int i = 0; i < 100; i++){
+            System.out.println("help lol");
+            boxes.add(new Box(i));
+        }
+        for (int i = 0; i < boxes.size(); i++){
+            System.out.println(boxes.get(i).getHiddenNumber());
+        }
+        System.out.println(boxes);
         return true;
     }
 }
