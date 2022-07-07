@@ -35,9 +35,11 @@ public class Prisoners {
         for (int i = 0; i < numberOfPrisoners; i++){
             System.out.println("help lol");
             boxes.add(new Box(i));
+            prisoners.add(new Prisoners.Prisoner(i));
         }
+        Collections.shuffle(boxes);
         for (int i = 0; i < boxes.size(); i++){
-            System.out.println(boxes.get(i).getHiddenNumber());
+            System.out.println("Box " + i + ": " + boxes.get(i).getHiddenNumber());
         }
         System.out.println(boxes);
         return true;
