@@ -44,6 +44,33 @@ public class Prisoners {
         for (int i = 0; i < prisoners.size(); i++){
             System.out.println("Prisoner " + i + ": " + prisoners.get(i).getPrisonerNumber());
         }
+
+
+        // Still working on this part with the loop
+        int countOfBoxesChecked = 0;
+        int boxCountChecklimit = numberOfPrisoners/2;
+
+        int currentBox;
+        System.out.println("prisoners size " + prisoners.size());
+        for (int i = 0; i < prisoners.size(); i++){
+            // System.out.println("Prisoner " + i + ": " + prisoners.get(i).getPrisonerNumber());
+            currentBox = (prisoners.get(i)).getPrisonerNumber();
+            System.out.println("Current Box Number: " + currentBox);
+            while (countOfBoxesChecked <= boxCountChecklimit){
+                if (countOfBoxesChecked >= boxCountChecklimit){
+                    return false;
+                }
+                if (((boxes.get(i)).getHiddenNumber()) == i){
+                    break;
+                }
+                else{
+                    currentBox = (boxes.get(currentBox)).getHiddenNumber();
+                    countOfBoxesChecked++;
+                }
+
+            }
+            return true;
+        }
         // System.out.println(boxes);
         // System.out.println(prisoners);
         return true;
