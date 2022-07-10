@@ -38,7 +38,7 @@ def prisoners(numOfPrisoners):
 
 successes = 0
 fails = 0
-for i in range(100000):
+for i in range(1000000):
     value = prisoners(100)
     if value == True:
         successes += 1
