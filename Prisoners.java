@@ -2,6 +2,20 @@ import java.util.*;
 public class Prisoners {
     public static void main(String[] args){
         System.out.println(prisonExperiment(100));
+        int successes = 0;
+        int failures = 0;
+        boolean result;
+        for(int i = 0; i < 100; i++){
+            result = prisonExperiment(100);
+            if (result == true){
+                successes++;
+            }
+            if (result == false){
+                failures++;
+            }
+        }
+        System.out.println("Successes: " + successes);
+        System.out.println("Failures: " + failures);
     }
     public static class Prisoner{
         private int prisonerNumber;
@@ -41,9 +55,9 @@ public class Prisoners {
         for (int i = 0; i < boxes.size(); i++){
             System.out.println("Box " + i + ": " + boxes.get(i).getHiddenNumber());
         }
-        for (int i = 0; i < prisoners.size(); i++){
-            System.out.println("Prisoner " + i + ": " + prisoners.get(i).getPrisonerNumber());
-        }
+        // for (int i = 0; i < prisoners.size(); i++){
+        //     System.out.println("Prisoner " + i + ": " + prisoners.get(i).getPrisonerNumber());
+        // }
 
 
         // Still working on this part with the loop
@@ -58,18 +72,24 @@ public class Prisoners {
             System.out.println("Current Box Number: " + currentBox);
             while (countOfBoxesChecked <= boxCountChecklimit){
                 if (countOfBoxesChecked >= boxCountChecklimit){
+                    System.out.println("Box count check limit reached");
                     return false;
                 }
-                if (((boxes.get(i)).getHiddenNumber()) == i){
+                if (((boxes.get(currentBox)).getHiddenNumber()) == (prisoners.get(i)).getPrisonerNumber()){
+                    System.out.println("Prisoner has found the correct box");
+                    System.out.println("Box " + currentBox + " is correct. Contains number "
+                         + (boxes.get(currentBox)).getHiddenNumber());
+                    countOfBoxesChecked = 0;
                     break;
                 }
                 else{
+                    System.out.println("Box " + currentBox + " is incorrect. Contains number "
+                         + (boxes.get(currentBox)).getHiddenNumber());
                     currentBox = (boxes.get(currentBox)).getHiddenNumber();
                     countOfBoxesChecked++;
                 }
 
             }
-            return true;
         }
         // System.out.println(boxes);
         // System.out.println(prisoners);
