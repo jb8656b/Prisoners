@@ -6,14 +6,25 @@ public class Prisoners {
         int failures = 0;
         boolean result;
 
-        // Scanner myScanner = new Scanner(System.in);  // Create a Scanner object
-        // System.out.println("How many times would you like to run the simulation?");
+        Scanner myScanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("How many times would you like to run the simulation?");
 
-        // String numberOfTimes = myScanner.nextLine();  // Read user input
-        // System.out.println("Username is: " + userName);  // Output user input
+        String numberOfTimesString = myScanner.nextLine();  // Read user input
+        myScanner.close();
 
-        for(int i = 0; i < 10000000; i++){
-            result = prisonExperiment(100);
+        int numberOfTimes = 1000;
+        int numberOfPrisoners = 100;
+
+        try{
+            numberOfTimes = Integer.parseInt(numberOfTimesString);
+        } catch (Exception NotAnInteger){
+            System.out.println("Not an integer.");
+        }
+        // numberOfTimes = Integer.parseInt(numberOfTimesString);
+        System.out.println("Running " + numberOfTimes + " times.");  // Output user input
+
+        for(int i = 0; i < numberOfTimes; i++){
+            result = prisonExperiment(numberOfPrisoners);
             if (result == true){
                 successes++;
             }
