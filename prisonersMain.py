@@ -1,4 +1,5 @@
 import random
+import time
 def prisoners(numOfPrisoners):
     # This function returns True if the prisoners
     # succeed, returns false if the prisoners fail
@@ -38,11 +39,15 @@ def prisoners(numOfPrisoners):
 
 successes = 0
 fails = 0
-for i in range(1000000):
+t0 = time.time()
+for i in range(100000):
     value = prisoners(100)
     if value == True:
         successes += 1
     if value == False:
         fails += 1
+t1 = time.time()
 print("Successes:", successes)
 print("Fails:", fails)
+totalTime = t1-t0
+print("Total time =", totalTime, "seconds")

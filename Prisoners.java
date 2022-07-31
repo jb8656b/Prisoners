@@ -23,6 +23,8 @@ public class Prisoners {
         // numberOfTimes = Integer.parseInt(numberOfTimesString);
         System.out.println("Running " + numberOfTimes + " times.");  // Output user input
 
+        double startTime = System.currentTimeMillis();
+
         for(int i = 0; i < numberOfTimes; i++){
             result = prisonExperiment(numberOfPrisoners);
             if (result == true){
@@ -34,12 +36,15 @@ public class Prisoners {
         }
         System.out.println("Successes: " + successes);
         System.out.println("Failures: " + failures);
+        double endTime = System.currentTimeMillis();
+        float totalTime = (float) ((endTime - startTime)/1000);
+        System.out.println("Total time: " + totalTime);
     }
     public static class Prisoner{
         private int prisonerNumber;
 
-        public Prisoner(int prisonerNumberHolder){
-            prisonerNumber = prisonerNumberHolder;
+        public Prisoner(int prisonerNumber){
+            this.prisonerNumber = prisonerNumber;
         }
         public int getPrisonerNumber(){
             return this.prisonerNumber;
@@ -48,42 +53,29 @@ public class Prisoners {
 
     public static class Box{
         private int hiddenNumber;
-        public Box(int hiddenNumberHolder){
-            hiddenNumber = hiddenNumberHolder;
+        public Box(int hiddenNumber){
+            this.hiddenNumber = hiddenNumber;
         }
         public int getHiddenNumber(){
             return this.hiddenNumber;
         }
     }
     static boolean prisonExperiment(int numberOfPrisoners){
-        // System.out.println("Test");
+
         List<Box> boxes = new ArrayList<Box>();
         List<Prisoner> prisoners = new ArrayList<Prisoner>();
-        // Box testBox = new Box(3);
-        // System.out.println(testBox.getHiddenNumber());
-        // Prisoner testPrisoner = new Prisoner(2);
-        // System.out.println(testPrisoner.getPrisonerNumber());
-        // boxes.add(testBox);
+
         for (int i = 0; i < numberOfPrisoners; i++){
             // System.out.println("help lol");
             boxes.add(new Box(i));
             prisoners.add(new Prisoner(i));
         }
         Collections.shuffle(boxes);
-        for (int i = 0; i < boxes.size(); i++){
-            // System.out.println("Box " + i + ": " + boxes.get(i).getHiddenNumber());
-        }
-        // for (int i = 0; i < prisoners.size(); i++){
-        //     System.out.println("Prisoner " + i + ": " + prisoners.get(i).getPrisonerNumber());
-        // }
 
-
-        // Still working on this part with the loop
         int countOfBoxesChecked = 0;
         int boxCountChecklimit = numberOfPrisoners/2;
 
         int currentBox;
-        // System.out.println("prisoners size " + prisoners.size());
         for (int i = 0; i < prisoners.size(); i++){
             // System.out.println("Prisoner " + i + ": " + prisoners.get(i).getPrisonerNumber());
             currentBox = (prisoners.get(i)).getPrisonerNumber();
